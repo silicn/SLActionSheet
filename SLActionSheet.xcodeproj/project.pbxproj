@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9722D31E1BEB7DAD00A07C0F /* iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9722D31D1BEB7DAD00A07C0F /* iphone.png */; };
 		9741BCCD1BE7B2E400BC8683 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCCC1BE7B2E400BC8683 /* main.m */; };
 		9741BCD01BE7B2E400BC8683 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCCF1BE7B2E400BC8683 /* AppDelegate.m */; };
 		9741BCD31BE7B2E400BC8683 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCD21BE7B2E400BC8683 /* ViewController.m */; };
 		9741BCD61BE7B2E400BC8683 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9741BCD41BE7B2E400BC8683 /* Main.storyboard */; };
 		9741BCD81BE7B2E400BC8683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9741BCD71BE7B2E400BC8683 /* Assets.xcassets */; };
 		9741BCDB1BE7B2E400BC8683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9741BCD91BE7B2E400BC8683 /* LaunchScreen.storyboard */; };
+		9741BCE51BE7B33F00BC8683 /* SLActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCE41BE7B33F00BC8683 /* SLActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9722D31D1BEB7DAD00A07C0F /* iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone.png; sourceTree = "<group>"; };
 		9741BCC81BE7B2E400BC8683 /* SLActionSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLActionSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9741BCCC1BE7B2E400BC8683 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9741BCCE1BE7B2E400BC8683 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +29,8 @@
 		9741BCD71BE7B2E400BC8683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9741BCDA1BE7B2E400BC8683 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9741BCDC1BE7B2E400BC8683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9741BCE31BE7B33F00BC8683 /* SLActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLActionSheet.h; sourceTree = "<group>"; };
+		9741BCE41BE7B33F00BC8683 /* SLActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 		9741BCCA1BE7B2E400BC8683 /* SLActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				9722D31D1BEB7DAD00A07C0F /* iphone.png */,
 				9741BCCE1BE7B2E400BC8683 /* AppDelegate.h */,
 				9741BCCF1BE7B2E400BC8683 /* AppDelegate.m */,
 				9741BCD11BE7B2E400BC8683 /* ViewController.h */,
@@ -67,6 +73,8 @@
 				9741BCD91BE7B2E400BC8683 /* LaunchScreen.storyboard */,
 				9741BCDC1BE7B2E400BC8683 /* Info.plist */,
 				9741BCCB1BE7B2E400BC8683 /* Supporting Files */,
+				9741BCE31BE7B33F00BC8683 /* SLActionSheet.h */,
+				9741BCE41BE7B33F00BC8683 /* SLActionSheet.m */,
 			);
 			path = SLActionSheet;
 			sourceTree = "<group>";
@@ -136,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9722D31E1BEB7DAD00A07C0F /* iphone.png in Resources */,
 				9741BCDB1BE7B2E400BC8683 /* LaunchScreen.storyboard in Resources */,
 				9741BCD81BE7B2E400BC8683 /* Assets.xcassets in Resources */,
 				9741BCD61BE7B2E400BC8683 /* Main.storyboard in Resources */,
@@ -149,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9741BCE51BE7B33F00BC8683 /* SLActionSheet.m in Sources */,
 				9741BCD31BE7B2E400BC8683 /* ViewController.m in Sources */,
 				9741BCD01BE7B2E400BC8683 /* AppDelegate.m in Sources */,
 				9741BCCD1BE7B2E400BC8683 /* main.m in Sources */,
@@ -298,6 +308,7 @@
 				9741BCE11BE7B2E400BC8683 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
