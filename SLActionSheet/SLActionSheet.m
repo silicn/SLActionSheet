@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong)NSMutableArray *dataSource;
 
+@property (nonatomic, strong)UILabel *headView;
 
 @end
 
@@ -33,11 +34,14 @@ static SLActionSheet *actionsheet = nil;
     self = [super initWithFrame:frame];
     if (self) {
         self.dataSource = [NSMutableArray arrayWithCapacity:1];
-        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-        UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        visualEffectView.alpha = 0.5;
-        visualEffectView.frame = frame;
-        [self addSubview:visualEffectView];
+        
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+            UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+            visualEffectView.alpha = 0.5;
+            visualEffectView.frame = frame;
+            [self addSubview:visualEffectView];
+        }
     }
     return self;
 }
@@ -56,13 +60,15 @@ static SLActionSheet *actionsheet = nil;
 {
     self = [self initWithFrame:[UIScreen mainScreen].bounds];
     if (self) {
+        
         self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0];
         if (delegate) {
             self.delegate = delegate;
         }
         if (title) {
             _title = title;
-            [self.dataSource addObject:title];
+            self.tableView.tableHeaderView = self.headView;
+            self.headView.text = title;
         }
         if (destructiveButtonTitle) {
             [self.dataSource addObject:destructiveButtonTitle];
@@ -85,7 +91,7 @@ static SLActionSheet *actionsheet = nil;
             _cancelTitle = cancelButtonTitle;
             [self.dataSource addObject:cancelButtonTitle];
         }
-        
+        [self addSubview:self.tableView];
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         [self.tableView reloadData];
@@ -109,7 +115,7 @@ static SLActionSheet *actionsheet = nil;
     if (section == 0) {
         return 0.001f;
     }else{
-        return 6.0f;
+        return 0.001f;
     }
 }
 
@@ -125,9 +131,17 @@ static SLActionSheet *actionsheet = nil;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc]init];
-    view.backgroundColor = [UIColor clearColor];
+    view.backgroundColor = [UIColor redColor];
     return view;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc]init];
+    view.backgroundColor = [UIColor redColor];
+    return view;
+}
+
 
 -(void)layoutSubviews
 {
@@ -138,6 +152,11 @@ static SLActionSheet *actionsheet = nil;
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.001f;
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -159,36 +178,25 @@ static SLActionSheet *actionsheet = nil;
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndetifier];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.separatorInset = UIEdgeInsetsMake(0, -50, 0, 0);
     }
-    
-    if (_title && indexPath.section == 0 && indexPath.row == 0) {
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:12.0];
-    }else{
         cell.textLabel.textColor = [UIColor blackColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-    }
-    
+        cell.textLabel.font = [UIFont systemFontOfSize:18.0];    
     if (indexPath.section == 0) {
        cell.textLabel.text = self.dataSource[indexPath.row]; 
     }else{
         cell.textLabel.text = [self.dataSource lastObject];
     }
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 { 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (_title) {
-        if (indexPath.row == 0 && indexPath.section == 0) {
-            return;
-        }
-    }
     
     if (indexPath.section == 1  && _cancelTitle) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(actionSheetCancel:)]) {
+            [self.delegate actionSheetCancel:self];
+        }
         [self removeSelfAnimate];
         return;
     }
@@ -197,7 +205,7 @@ static SLActionSheet *actionsheet = nil;
        
         [self.delegate actionSheet:self clickedAtIndex:indexPath.row];
     }
-     NSLog(@"%ld",(long)indexPath.row);
+
     [self removeSelfAnimate];
 }
 
@@ -207,7 +215,6 @@ static SLActionSheet *actionsheet = nil;
     [super touchesBegan:touches withEvent:event];
     [self removeSelfAnimate];
 }
-
 
 - (void)removeSelfAnimate
 {
@@ -220,33 +227,49 @@ static SLActionSheet *actionsheet = nil;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
-    
-  
 }
 
 - (void)showInView:(nonnull UIView *)view
 {
-    [view addSubview:self];
+    [[UIApplication  sharedApplication].keyWindow addSubview:self];
     if (_tableView) {
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.25];
             CGRect frame = _tableView.frame;
-            frame.origin.y = view.bounds.size.height - _tableView.contentSize.height;
+            NSLog(@"%f   %f ",_tableView.contentSize.height,frame.origin.y);
+            
+            
+            frame.origin.y = frame.origin.y - _tableView.contentSize.height;
             frame.size.height = _tableView.contentSize.height;
             _tableView.frame = frame;
-        } completion:^(BOOL finished) {
-        }];
+        } completion:NULL];
     }
+}
+
+
+- (UILabel *)headView
+{
+    if (_headView == nil) {
+        _headView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44)];
+        _headView.backgroundColor = [UIColor whiteColor];
+        _headView.font = [UIFont systemFontOfSize:13.0];
+        _headView.textColor = [UIColor lightGrayColor];
+        _headView.textAlignment = NSTextAlignmentCenter;
+        _headView.text = _title;
+    }
+
+    return _headView;
 }
 
 - (UITableView *)tableView
 {
     if (_tableView == nil) {
-        _tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 100, [UIScreen mainScreen].bounds.size.width, 100) style:UITableViewStylePlain];
-        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView  = [[UITableView alloc]initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 20) style:UITableViewStyleGrouped];
+        _tableView.backgroundColor = [UIColor cyanColor];
         _tableView.scrollEnabled = NO;
         _tableView.scrollsToTop = NO;
-        [self addSubview:_tableView];
+        _tableView.rowHeight = 44.0f;
+//        [self addSubview:_tableView];
     }
     return _tableView;
 }
