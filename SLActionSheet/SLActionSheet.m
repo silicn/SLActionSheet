@@ -243,7 +243,7 @@ static SLActionSheet *actionsheet = nil;
     [superView.window addSubview:self];
     if (_tableView) {
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-         //   self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.25];
+            self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.25];
             CGRect frame = _tableView.frame;
             NSLog(@"%f   %f ",_tableView.contentSize.height,frame.origin.y);
             frame.origin.y = frame.origin.y - _tableView.contentSize.height + (_title == nil ? 0:20);
