@@ -17,25 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smx-eV-f0h">
-                                <rect key="frame" x="59" y="250" width="37" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smx-eV-f0h">
+                                <rect key="frame" x="109" y="257" width="102" height="30"/>
                                 <animations/>
-                                <state key="normal" title="show"/>
+                                <state key="normal" title="显示sheetView"/>
                                 <connections>
                                     <action selector="click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zJZ-lP-6pm"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KT-gt-wpo">
-                                <rect key="frame" x="184" y="250" width="39" height="30"/>
-                                <animations/>
-                                <state key="normal" title="sheet"/>
-                                <connections>
-                                    <action selector="sheetClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="66D-Ei-wBC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="smx-eV-f0h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="237" id="Zzv-Pf-zi9"/>
+                            <constraint firstItem="smx-eV-f0h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kQb-ku-76b"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
