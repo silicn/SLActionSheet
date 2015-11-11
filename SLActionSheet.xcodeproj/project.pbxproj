@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97109A7D1BF1E003007D9D5B /* UIControl+ClickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 97109A7C1BF1E003007D9D5B /* UIControl+ClickButton.m */; };
 		9741BCCD1BE7B2E400BC8683 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCCC1BE7B2E400BC8683 /* main.m */; };
 		9741BCD01BE7B2E400BC8683 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCCF1BE7B2E400BC8683 /* AppDelegate.m */; };
 		9741BCD31BE7B2E400BC8683 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9741BCD21BE7B2E400BC8683 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97109A7B1BF1E003007D9D5B /* UIControl+ClickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+ClickButton.h"; sourceTree = "<group>"; };
+		97109A7C1BF1E003007D9D5B /* UIControl+ClickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ClickButton.m"; sourceTree = "<group>"; };
 		9741BCC81BE7B2E400BC8683 /* SLActionSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLActionSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9741BCCC1BE7B2E400BC8683 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9741BCCE1BE7B2E400BC8683 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				9741BCCB1BE7B2E400BC8683 /* Supporting Files */,
 				9741BCE31BE7B33F00BC8683 /* SLActionSheet.h */,
 				9741BCE41BE7B33F00BC8683 /* SLActionSheet.m */,
+				97109A7B1BF1E003007D9D5B /* UIControl+ClickButton.h */,
+				97109A7C1BF1E003007D9D5B /* UIControl+ClickButton.m */,
 			);
 			path = SLActionSheet;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9741BCE51BE7B33F00BC8683 /* SLActionSheet.m in Sources */,
+				97109A7D1BF1E003007D9D5B /* UIControl+ClickButton.m in Sources */,
 				9741BCD31BE7B2E400BC8683 /* ViewController.m in Sources */,
 				9741BCD01BE7B2E400BC8683 /* AppDelegate.m in Sources */,
 				9741BCCD1BE7B2E400BC8683 /* main.m in Sources */,

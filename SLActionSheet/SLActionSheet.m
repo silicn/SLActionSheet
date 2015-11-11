@@ -42,11 +42,11 @@ static SLActionSheet *actionsheet = nil;
             UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 #warning this will cause the effect to appear broken until opacity returns to 1.
             visualEffectView.alpha = 0.4;
-            
             visualEffectView.frame = frame;
             [self addSubview:visualEffectView];
         }
     }
+    
     return self;
 }
 
@@ -128,9 +128,6 @@ static SLActionSheet *actionsheet = nil;
 {
     return 0.001f;
 }
-
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -227,7 +224,6 @@ static SLActionSheet *actionsheet = nil;
 
 - (void)removeSelfAnimate
 {
-    
     [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         CGRect frame = _tableView.frame;
         frame.origin.y = [UIScreen mainScreen].bounds.size.height;

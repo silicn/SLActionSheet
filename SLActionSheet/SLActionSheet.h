@@ -11,7 +11,7 @@
 
 @protocol sheetDelegate <NSObject>
 
-- (void)actionSheet:(nonnull SLActionSheet *)sheet clickedAtIndex:(NSInteger )index;
+- (void)actionSheet:(nonnull SLActionSheet *)sheet clickedAtIndex:(NSInteger)index;
 
 - (void)actionSheetCancel:(nonnull SLActionSheet *)sheet;
 
@@ -27,7 +27,6 @@
 @property(nonatomic, strong) UIColor * _Nullable cancelColor;
 
 - (nullable id)initWithTitle:(nullable NSString *)title delegate:(nullable id<UIActionSheetDelegate>)delegate cancelButtonTitle:(nullable NSString *)cancelButtonTitle destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle otherButtonTitles:(nullable NSString *)otherButtonTitles, ...; 
-
 
 - (void)showInView:(nonnull UIView *)superView;
 
