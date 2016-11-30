@@ -32,24 +32,24 @@
     
     
     
-    UIButton *tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [tempBtn addTarget:self action:@selector(clickWithInterval:) forControlEvents:UIControlEventTouchUpInside];
-    tempBtn.uxy_acceptEventInterval = 2;
-    tempBtn.frame  = CGRectMake(100, 200, 100, 50);
-    tempBtn.backgroundColor = [UIColor redColor];
-  //  tempBtn.uxy_ignoreEvent = YES;
-    [self.view addSubview:tempBtn];
-    
-    NSLog(@"%@",[self getAllProperties:tempBtn]);
-    
-    
-    UIButton *temp2Btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [temp2Btn addTarget:self action:@selector(clickWithInterval2:) forControlEvents:UIControlEventTouchUpInside];
- //   temp2Btn.uxy_acceptEventInterval = 2;
-    temp2Btn.frame  = CGRectMake(100, 300, 100, 50);
-    temp2Btn.backgroundColor = [UIColor redColor];
-    //  tempBtn.uxy_ignoreEvent = YES;
-    [self.view addSubview:temp2Btn];
+//    UIButton *tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [tempBtn addTarget:self action:@selector(clickWithInterval:) forControlEvents:UIControlEventTouchUpInside];
+//    tempBtn.uxy_acceptEventInterval = 2;
+//    tempBtn.frame  = CGRectMake(100, 200, 100, 50);
+//    tempBtn.backgroundColor = [UIColor redColor];
+//  //  tempBtn.uxy_ignoreEvent = YES;
+//    [self.view addSubview:tempBtn];
+//    
+//    NSLog(@"%@",[self getAllProperties:tempBtn]);
+//    
+//    
+//    UIButton *temp2Btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [temp2Btn addTarget:self action:@selector(clickWithInterval2:) forControlEvents:UIControlEventTouchUpInside];
+// //   temp2Btn.uxy_acceptEventInterval = 2;
+//    temp2Btn.frame  = CGRectMake(100, 300, 100, 50);
+//    temp2Btn.backgroundColor = [UIColor redColor];
+//    //  tempBtn.uxy_ignoreEvent = YES;
+//    [self.view addSubview:temp2Btn];
     
     
     // Do any additional setup after loading the view, typically from a nib.

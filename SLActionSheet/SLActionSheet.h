@@ -20,14 +20,15 @@
 
 @interface SLActionSheet : UIView
 
-@property(nonatomic,weak)id <sheetDelegate> delegate;
+@property(nonatomic,weak,nullable) id <sheetDelegate>   delegate;
 
-@property(nonatomic)NSInteger destructiveButtonIndex;      // sets destructive (red) button. -1 means none set. default is -1. ignored if only one button
+// sets destructive (red) button. -1 means none set. default is -1. ignored if only one button
 
+@property(nonatomic)NSInteger destructiveButtonIndex;     
 @property(nonatomic, strong) UIColor * _Nullable cancelColor;
 
-- (nullable id)initWithTitle:(nullable NSString *)title delegate:(nullable id<UIActionSheetDelegate>)delegate cancelButtonTitle:(nullable NSString *)cancelButtonTitle destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle otherButtonTitles:(nullable NSString *)otherButtonTitles, ...; 
-
+- (nullable id)initWithTitle:(nullable NSString *)title delegate:(nullable id<UIActionSheetDelegate>)delegate cancelButtonTitle:(nullable NSString *)cancelButtonTitle destructiveButtonTitle:(nullable NSString *)destructiveButtonTitle otherButtonTitles:(nullable NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION; 
+ 
 - (void)showInView:(nonnull UIView *)superView;
 
 

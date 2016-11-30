@@ -41,7 +41,7 @@ static SLActionSheet *actionsheet = nil;
             UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
             UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 #warning this will cause the effect to appear broken until opacity returns to 1.
-            visualEffectView.alpha = 0.4;
+            visualEffectView.alpha = 0.3;
             visualEffectView.frame = frame;
             [self addSubview:visualEffectView];
         }
@@ -94,8 +94,9 @@ static SLActionSheet *actionsheet = nil;
         
         if (title) {
             _title = title;
-            self.tableView.tableHeaderView = self.headView;
+            
             self.headView.text = title;
+            self.tableView.tableHeaderView = self.headView;
         }
 
         self.tableView.delegate = self;
@@ -257,9 +258,9 @@ static SLActionSheet *actionsheet = nil;
         _headView.backgroundColor = [UIColor whiteColor];
         _headView.font = [UIFont systemFontOfSize:13.0];
         _headView.textColor = [UIColor lightGrayColor];
+        _headView.numberOfLines = 0;
         _headView.textAlignment = NSTextAlignmentCenter;
     }
-
     return _headView;
 }
 
